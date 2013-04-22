@@ -40,10 +40,10 @@ this.CaptainCtrl = function ($scope, $http, $location) {
     $scope.addCap.votes = 1;
     cappy ={"name": $scope.addCap.name,"imgUrl": $scope.addCap.imgUrl, "source": $scope.addCap.source, "votes":  $scope.addCap.votes, "idx": $scope.addCap.idx};
     $scope.captains.push(cappy);
-    console.log("cappy -> "+cappy);
     $http.post('/api/captain', cappy).
       success(function(data) {
         $location.path('/');
+        console.log("success! " + data);
       }).
       error(function(data,status) {
         console.log("error data: " + data);
