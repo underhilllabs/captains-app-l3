@@ -2,7 +2,7 @@
 
 Route::get('/', function() {
 	return View::make('home.index');
-  #return "Yowza, Zoidberg!";
+  #return "Why not, Zoidbergr?";
 });
 
 Route::get('api/captains', function() {
@@ -15,10 +15,31 @@ Route::get('api/captain/(:num)', function($id) {
 });
 
 Route::post('api/captain', function() {
+  $data = Input::json();
+  $cap = new Captain;
+  $dname=$data->name;
+  $cap->name = $data->name;
+  $cap->source = $data->source;
+  $cap->imgUrl = $data->imgUrl;
+  $cap->idx =  $data->idx;
+  $cap->votes = 1;
+  $cap->save();
+  return "Why not, Zoidberg? Well, " . $data->name;
+  #return Response::eloquent(Captain::find($cap->id));
 });
-Route::post('api/captain', 'CaptainController@createCaptain');
+#Route::post('api/captain', 'CaptainController@createCaptain');
 
-Route::put('api/captain/(:num)', 'CaptainController@updateCaptain');
+Route::put('api/captain/(:num)', function($id) {
+  // js id starts at 0, db starts at 1.
+  $id += 1;
+  $c = Captain::find($id);
+  $data = Input::json();
+  $c->votes = $data->votes;
+  $c->save();
+  var_dump($data);
+  return "Why not, Zoidberg? Well, " . $c->name . " he's got votes: " .$data->votes;
+});
+#Route::put('api/captain/(:num)', 'CaptainController@updateCaptain');
 
 /*
 |--------------------------------------------------------------------------
