@@ -13,31 +13,11 @@ Route::get('api/captain/(:num)', function($id) {
   return Response::eloquent(Captain::find($id));
 });
 
-Route::post('api/captain', function() {
-  $data = Input::json();
-  $cap = new Captain;
-  $cap->name = $data->name;
-  $cap->source = $data->source;
-  $cap->imgUrl = $data->imgUrl;
-  $cap->idx =  $data->idx;
-  $cap->votes = 1;
-  $cap->save();
-  //return "Why not, Zoidberg? Well, " . $data->name;
-  return Response::eloquent($cap);
-});
-#Route::post('api/captain', 'CaptainController@createCaptain');
+//Route::post('api/captain', function() {
+//});
+Route::post('api/captain', 'captain@create');
 
-Route::put('api/captain/(:num)', function($id) {
-  // js id starts at 0, db starts at 1.
-  $id += 1;
-  $c = Captain::find($id);
-  $data = Input::json();
-  $c->votes = $data->votes;
-  $c->save();
-  var_dump($data);
-  return "Why not, Zoidberg? Well, " . $c->name . " he's got votes: " .$data->votes;
-});
-#Route::put('api/captain/(:num)', 'CaptainController@updateCaptain');
+Route::put('api/captain/(:num)', 'captain@update');
 
 /*
 |--------------------------------------------------------------------------
