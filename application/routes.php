@@ -2,7 +2,6 @@
 
 Route::get('/', function() {
 	return View::make('home.index');
-  #return "Why not, Zoidbergr?";
 });
 
 Route::get('api/captains', function() {
@@ -17,15 +16,14 @@ Route::get('api/captain/(:num)', function($id) {
 Route::post('api/captain', function() {
   $data = Input::json();
   $cap = new Captain;
-  $dname=$data->name;
   $cap->name = $data->name;
   $cap->source = $data->source;
   $cap->imgUrl = $data->imgUrl;
   $cap->idx =  $data->idx;
   $cap->votes = 1;
   $cap->save();
-  return "Why not, Zoidberg? Well, " . $data->name;
-  #return Response::eloquent(Captain::find($cap->id));
+  //return "Why not, Zoidberg? Well, " . $data->name;
+  return Response::eloquent($cap);
 });
 #Route::post('api/captain', 'CaptainController@createCaptain');
 

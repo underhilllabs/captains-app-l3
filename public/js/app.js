@@ -49,11 +49,9 @@ this.CaptainCtrl = function ($scope, $http, $location) {
         console.log("error data: " + data);
         console.log("ERROR: " + status)
       });
-    $scope.addCap.cptName = "";
-    $scope.addCap.cptUrl = "";
-    $scope.addCap.cptSource = "";
-    $scope.addCap.idx = "";
-    $scope.addCap.votes = "";
+    $scope.addCap.name = "";
+    $scope.addCap.imgUrl = "";
+    $scope.addCap.source = "";
   }
 };
 

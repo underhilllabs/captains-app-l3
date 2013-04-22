@@ -17,7 +17,7 @@
       <h3>{{captain.name}}</h3>
       <p>{{captain.source}}</p>
       <span>
-      <img ng-src="{{captain.image}}" width="100" class="img-rounded">
+      <img ng-src="{{captain.imgurl}}" width="100" class="img-rounded">
 			<button ng-click="inc(captain.idx)" class="btn btn-primary voteButton">{{captain.votes}}</button>
       </span>
     </div>
