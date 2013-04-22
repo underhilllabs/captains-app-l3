@@ -1,6 +1,7 @@
 <!doctype html>
 <html ng-app="CptnCounter">
   <head>
+    <title>Vote for your Favorite Sci-Fi Starship Captain</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular-resource.min.js"></script>
     <script src="js/app.js"></script>
@@ -17,16 +18,16 @@
       <p>{{captain.source}}</p>
       <span>
       <img ng-src="{{captain.image}}" width="100" class="img-rounded">
-			<button ng-click="inc(captain.id)" class="btn btn-primary voteButton">{{captain.votes}}</button>
+			<button ng-click="inc(captain.idx)" class="btn btn-primary voteButton">{{captain.votes}}</button>
       </span>
     </div>
 </div>
 <div id="newCaptainForm" class="span4">
 	<h3 id="form-header">Add A New Contendeh!</h3>
 	<form ng-submit="addCaptain()">
-		Name:<br> <input type=text ng-model="addCap.cptName"><br>
-		Image URL:<br> <input type=text ng-model="addCap.cptUrl"><br>
-		book/movie source:<br> <input type=text ng-model="addCap.cptSource"><br>
+		Name:<br> <input type=text ng-model="addCap.name"><br>
+		Image URL:<br> <input type=text ng-model="addCap.imgUrl"><br>
+		book/movie source:<br> <input type=text ng-model="addCap.source"><br>
     <input type=submit value="Add Captain!">
 	</form>
 </div>
